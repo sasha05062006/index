@@ -38,6 +38,14 @@ h1{font-size:clamp(46px,12vw,116px);line-height:.95;font-weight:800;letter-spaci
 .pay{display:inline-block;margin-top:24px;padding:14px 18px;border:1px solid var(--line);border-left:3px solid var(--acc);background:var(--bg2);border-radius:4px 12px 12px 4px}
 .pay b{display:block;font-size:clamp(18px,2.6vw,24px);font-weight:800}
 .pay span{color:var(--mute);font-size:.9em}
+.trust-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.trust-row span{padding:7px 11px;border:1px solid var(--line);border-radius:999px;color:var(--ink);background:rgba(255,255,255,.025);font-size:.86em}
+.section-intro{color:var(--mute);max-width:62ch;margin:-10px 0 26px}
+.strengths{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.strength{padding:20px;border:1px solid var(--line);background:var(--bg2);border-radius:16px}
+.strength b{display:block;font-size:18px;margin-bottom:5px}
+.strength span{color:var(--mute)}
+@media(max-width:600px){.strengths{grid-template-columns:1fr}}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:56px;padding:0 28px;background:var(--acc);color:var(--accInk);font:800 clamp(15px,2vw,17px) var(--font);letter-spacing:.04em;text-decoration:none;border-radius:999px;transition:transform .25s,background .25s}
 .btn:hover{background:#e0c084;transform:translateY(-2px)}
 .btn svg{width:22px;height:22px;flex:none}
@@ -96,6 +104,9 @@ body.ready .fade{opacity:1}
    <h1 data-i18n="name">Александр</h1>
    <p class="role" data-i18n="role">Кассир / Бариста</p>
    <p class="lead" data-i18n="lead"></p>
+   <div class="trust-row" aria-label="Преимущества">
+    <span data-i18n="trust1"></span><span data-i18n="trust2"></span><span data-i18n="trust3"></span>
+   </div>
    <div class="pay"><b data-i18n="pay1"></b><span data-i18n="pay2"></span></div>
    <div class="cta-row">
     <a class="btn callLink" href="tel:+998770146441" target="_top" data-i18n-aria="callAria"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.6a1 1 0 0 1-.25 1z"/></svg><span data-i18n="call"></span></a>
@@ -106,12 +117,30 @@ body.ready .fade{opacity:1}
 
  <section class="about" aria-labelledby="h-about"><h2 id="h-about" data-i18n="hAbout"></h2><p class="sw" data-i18n="about"></p></section>
 
+ <section aria-labelledby="h-strengths"><h2 id="h-strengths" data-i18n="hStrengths"></h2>
+  <p class="section-intro" data-i18n="strengthsIntro"></p>
+  <div class="strengths sw">
+   <div class="strength"><b data-i18n="s1"></b><span data-i18n="s1v"></span></div>
+   <div class="strength"><b data-i18n="s2"></b><span data-i18n="s2v"></span></div>
+   <div class="strength"><b data-i18n="s3"></b><span data-i18n="s3v"></span></div>
+   <div class="strength"><b data-i18n="s4"></b><span data-i18n="s4v"></span></div>
+  </div>
+ </section>
+
  <section aria-labelledby="h-exp"><h2 id="h-exp" data-i18n="hExp"></h2>
   <ol class="tl sw" id="tl"></ol>
  </section>
 
  <section aria-labelledby="h-skills"><h2 id="h-skills" data-i18n="hSkills"></h2>
   <ul class="chips sw" id="chips"></ul>
+ </section>
+
+ <section aria-labelledby="h-search"><h2 id="h-search" data-i18n="hSearch"></h2>
+  <ul class="langs sw">
+   <li><b data-i18n="searchRole"></b><span data-i18n="searchRoleV"></span></li>
+   <li><b data-i18n="searchCity"></b><span data-i18n="searchCityV"></span></li>
+   <li><b data-i18n="searchPay"></b><span data-i18n="searchPayV"></span></li>
+  </ul>
  </section>
 
  <section aria-labelledby="h-langs"><h2 id="h-langs" data-i18n="hLangs"></h2>
@@ -143,33 +172,55 @@ const translations = {
   title:"Александр — Кассир / Бариста",
   desc:"Александр — кассир / бариста с опытом работы с гостями, кассой, напитками и товаром.",
   name:"Александр", role:"Кассир / Бариста", alt:"Фотография Александра",
-  lead:"Опыт работы с гостями, кассой и напитками. Быстро обучаюсь и легко адаптируюсь к новым условиям.",
+  lead:"Опытный сотрудник для работы с гостями, кассой и напитками. Быстро включаюсь в процесс, спокойно работаю в потоке и ответственно отношусь к деньгам и товару.",
+  trust1:"✓ Ответственный", trust2:"✓ Быстро обучаюсь", trust3:"✓ Работаю в команде",
   pay1:"ОТ 250 000 СУМ / ДЕНЬ", pay2:"Желательно ежедневная выплата",
   call:"ПОЗВОНИТЬ АЛЕКСАНДРУ", callAria:"Позвонить Александру по номеру "+PHONE_DISPLAY,
   hAbout:"ОБО МНЕ",
   about:"Ответственный и коммуникабельный сотрудник с опытом работы с гостями, кассой, напитками и товаром. Быстро обучаюсь, легко нахожу общий язык с людьми, умею работать в команде и быстро адаптируюсь к новым условиям.",
+  hStrengths:"ПОЧЕМУ Я ПОДОЙДУ",
+  strengthsIntro:"Моя задача — не просто выйти на смену, а быть сотрудником, на которого можно спокойно положиться.",
+  s1:"Касса и деньги",s1v:"iiko, расчёт гостей, инкассация и внимательность к операциям.",
+  s2:"Кофе и напитки",s2v:"Приготовление напитков, работа по стандартам и поддержание порядка на рабочем месте.",
+  s3:"Товар и порядок",s3v:"FIFO, инвентаризация, закупки и контроль товара.",
+  s4:"Гости и команда",s4v:"Вежливое общение, работа в команде и спокойная работа в загруженные часы.",
   hExp:"ОПЫТ РАБОТЫ",
   exp:[["Asil Sazan","Работа с гостями и кассой."],["Razliv","Бармен-кассир: касса, товар, FIFO, закупки, инвентаризация, инкассация."],["Sobir Kaboblari","Официант."],["Мята Lounge Bar","Работа с гостями, кассой и напитками."],["GAO Coffee","Кофе и напитки по стандартам, касса, работа с гостями."],["Аудиотеле","Колл-центр: работа с клиентами, обработка обращений, консультирование по телефону."],["Bon Tashkent City","Официант."]],
   hSkills:"НАВЫКИ",
   skills:["iiko","Касса","Учёт товара","FIFO","Закупки","Инвентаризация","Инкассация","Приготовление кофе","Работа с гостями","Работа в команде","Быстрое обучение"],
+  hSearch:"ЧТО Я ИЩУ",
+  searchRole:"Позиция",searchRoleV:"Кассир / Бариста",
+  searchCity:"Локация",searchCityV:"Ташкент",
+  searchPay:"Условия",searchPayV:"от 250 000 сум / день, желательно ежедневно",
   hLangs:"ЯЗЫКИ", l1:"Русский", l1v:"родной", l2:"Узбекский", l2v:"70–80%",
-  hFinal:"ОБСУДИМ РАБОТУ?", finalText:"Готов выйти на работу и быстро включиться в процесс."
+  hFinal:"ГОТОВ ОБСУДИТЬ ВАКАНСИЮ", finalText:"Если вам нужен ответственный сотрудник, который быстро включается в работу и умеет работать с гостями, кассой и товаром — буду рад обсудить вакансию."
  },
  uz: {
   title:"Aleksandr — Kassir / Barista",
   desc:"Aleksandr — mijozlar, kassa, ichimliklar va mahsulotlar bilan ishlash tajribasiga ega kassir / barista.",
   name:"Aleksandr", role:"Kassir / Barista", alt:"Aleksandrning fotosurati",
-  lead:"Mijozlar, kassa va ichimliklar bilan ishlash tajribasi. Tez o‘rganaman va yangi sharoitlarga oson moslashaman.",
+  lead:"Mijozlar, kassa va ichimliklar bilan ishlash tajribasiga egaman. Jarayonga tez qo‘shilaman, gavjum paytda xotirjam ishlayman va pul hamda mahsulotlarga mas’uliyat bilan yondashaman.",
+  trust1:"✓ Mas’uliyatli", trust2:"✓ Tez o‘rganaman", trust3:"✓ Jamoada ishlayman",
   pay1:"KUNIGA 250 000 SO‘MDAN", pay2:"Imkon qadar kunlik to‘lov",
   call:"ALEKSANDRGA QO‘NG‘IROQ QILISH", callAria:"Aleksandrga "+PHONE_DISPLAY+" raqamiga qo‘ng‘iroq qilish",
   hAbout:"MEN HAQIMDA",
   about:"Mijozlar bilan ishlash, kassa, ichimliklar va mahsulotlar bilan ishlash tajribasiga ega mas’uliyatli va muloqotga kirishuvchan xodimman. Tez o‘rganaman, odamlar bilan tez til topishaman, jamoada ishlay olaman va yangi sharoitlarga tez moslashaman.",
+  hStrengths:"NEGA MEN MOS KELAMAN",
+  strengthsIntro:"Maqsadim — shunchaki smenaga chiqish emas, balki ishonch bilan topshirish mumkin bo‘lgan xodim bo‘lish.",
+  s1:"Kassa va pul",s1v:"iiko, mijozlar bilan hisob-kitob, inkassatsiya va operatsiyalarga e’tibor.",
+  s2:"Kofe va ichimliklar",s2v:"Ichimliklar tayyorlash, standartlarga rioya qilish va ish joyini tartibli saqlash.",
+  s3:"Mahsulot va tartib",s3v:"FIFO, inventarizatsiya, xaridlar va mahsulot nazorati.",
+  s4:"Mijozlar va jamoa",s4v:"Xushmuomalalik, jamoada ishlash va gavjum paytda xotirjam ishlash.",
   hExp:"ISH TAJRIBASI",
   exp:[["Asil Sazan","Mijozlar bilan ishlash va kassa."],["Razliv","Barmen-kassir: kassa, mahsulotlar, FIFO, xaridlar, inventarizatsiya, inkassatsiya."],["Sobir Kaboblari","Ofitsiant."],["Мята Lounge Bar","Mijozlar, kassa va ichimliklar bilan ishlash."],["GAO Coffee","Standart bo‘yicha kofe va ichimliklar tayyorlash, kassa, mijozlar bilan ishlash."],["Аудиотеле","Call-markaz: mijozlar bilan ishlash, murojaatlarni qabul qilish va telefon orqali maslahat berish."],["Bon Tashkent City","Ofitsiant."]],
   hSkills:"KO‘NIKMALAR",
   skills:["iiko","Kassa","Mahsulot hisobi","FIFO","Xaridlar","Inventarizatsiya","Inkassatsiya","Kofe tayyorlash","Mijozlar bilan ishlash","Jamoada ishlash","Tez o‘rganish"],
+  hSearch:"MEN NIMA IZLAYAPMAN",
+  searchRole:"Lavozim",searchRoleV:"Kassir / Barista",
+  searchCity:"Joylashuv",searchCityV:"Toshkent",
+  searchPay:"Shartlar",searchPayV:"kuniga 250 000 so‘mdan, imkon qadar kunlik to‘lov",
   hLangs:"TILLAR", l1:"Rus tili", l1v:"ona tili", l2:"O‘zbek tili", l2v:"70–80%",
-  hFinal:"ISH HAQIDA GAPLASHAMIZMI?", finalText:"Ishga chiqishga va jarayonga tez qo‘shilishga tayyorman."
+  hFinal:"ISH HAQIDA GAPLASHAМIZMI?", finalText:"Agar sizga mijozlar, kassa va mahsulot bilan ishlay oladigan mas’uliyatli xodim kerak bo‘lsa — vakansiyani mamnuniyat bilan muhokama qilaman."
  }
 };
 
